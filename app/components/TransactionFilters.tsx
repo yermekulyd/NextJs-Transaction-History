@@ -1,13 +1,13 @@
 import React from "react";
-
-type FilterType = 'date' | 'query' | 'type';
+import { FilterType } from "../types";
 
 type TransactionFiltersProps = {
   onFilterChange: (filterType: FilterType, value: string) => void;
 };
 
-
-const TransactionFilters: React.FC<TransactionFiltersProps> = ({ onFilterChange }) => {
+const TransactionFilters: React.FC<TransactionFiltersProps> = ({
+  onFilterChange,
+}) => {
   return (
     <div className="flex space-x-4 mb-4">
       <input
@@ -24,7 +24,6 @@ const TransactionFilters: React.FC<TransactionFiltersProps> = ({ onFilterChange 
         <option value="Deposit">Deposit</option>
         <option value="Withdrawal">Withdrawal</option>
       </select>
-      {/* Add more filters if needed */}
     </div>
   );
 };

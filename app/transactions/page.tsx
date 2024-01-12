@@ -1,18 +1,11 @@
 "use client";
 import React, { useState } from "react";
+
 import TransactionList from "../components/TransactionList";
 import TransactionModal from "../components/TransactionModal";
 import TransactionFilters from "../components/TransactionFilters";
-
-type Transaction = {
-  id: number;
-  date: string;
-  amount: string;
-  type: string;
-  details: string;
-};
-
-type FilterType = 'date' | 'query' | 'type';
+import { Transaction } from "../types";
+import { FilterType } from "../types";
 
 const TransactionsPage: React.FC = () => {
   // Mock data
@@ -57,15 +50,19 @@ const TransactionsPage: React.FC = () => {
     setFilterCriteria((prev) => ({ ...prev, [filterType]: value }));
   };
 
-  const filteredTransactions = transactions.filter((transaction) => {
-    // Implement filtering logic based on filterCriteria
-    return (
-      transaction.type.includes(filterCriteria.type) &&
-      transaction.details
-        .toLowerCase()
-        .includes(filterCriteria.query.toLowerCase())
-    );
-  });
+  const filterTransactions = (
+    transactions: Transaction[],
+    criteria: typeof filterCriteria
+  ) => {
+    return transactions.filter((transaction) => {
+      return (
+        transaction.type.includes(criteria.type) &&
+        transaction.details.toLowerCase().includes(criteria.query.toLowerCase())
+      );
+    });
+  };
+
+  const filteredTransactions = filterTransactions(transactions, filterCriteria);
 
   return (
     <div className="max-w-2xl mx-auto py-8">
@@ -74,7 +71,7 @@ const TransactionsPage: React.FC = () => {
       </h1>
       <TransactionFilters onFilterChange={handleFilterChange} />
       <TransactionList
-        transactions={filteredTransactions}  // Pass filteredTransactions here
+        transactions={filteredTransactions}
         onClick={handleTransactionClick}
       />
       {selectedTransaction && (
@@ -85,7 +82,6 @@ const TransactionsPage: React.FC = () => {
       )}
     </div>
   );
-  
 };
 
 export default TransactionsPage;

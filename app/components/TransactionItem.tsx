@@ -1,4 +1,3 @@
-// components/TransactionItem.tsx
 import React from "react";
 
 type TransactionProps = {
