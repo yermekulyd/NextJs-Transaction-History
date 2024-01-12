@@ -42,6 +42,55 @@ const TransactionsPage: React.FC = () => {
       type: "Withdrawal",
       details: "Internet Bill",
     },
+    {
+      id: 4,
+      date: "2023-01-18",
+      amount: "50.00",
+      type: "Withdrawal",
+      details: "Transport",
+    },
+    {
+      id: 5,
+      date: "2023-01-20",
+      amount: "500.00",
+      type: "Deposit",
+      details: "Freelance Work",
+    },
+    {
+      id: 6,
+      date: "2023-01-22",
+      amount: "300.00",
+      type: "Withdrawal",
+      details: "House Rent",
+    },
+    {
+      id: 7,
+      date: "2023-01-25",
+      amount: "120.00",
+      type: "Withdrawal",
+      details: "Utilities",
+    },
+    {
+      id: 8,
+      date: "2023-01-28",
+      amount: "75.00",
+      type: "Withdrawal",
+      details: "Dining Out",
+    },
+    {
+      id: 9,
+      date: "2023-01-30",
+      amount: "250.00",
+      type: "Deposit",
+      details: "Gift",
+    },
+    {
+      id: 10,
+      date: "2023-02-01",
+      amount: "1000.00",
+      type: "Deposit",
+      details: "Bonus",
+    },
   ];
 
   const [selectedTransaction, setSelectedTransaction] =
