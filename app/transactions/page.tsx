@@ -122,34 +122,41 @@ const TransactionsPage: React.FC = () => {
   const { totalIncome, totalExpense, balance } = calculateTotals(transactions);
 
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold text-center mb-6">
-        Transaction History
-      </h1>
-      <TransactionFilters onFilterChange={handleFilterChange} />
-      <TransactionList
-        transactions={filteredTransactions}
-        onClick={handleTransactionClick}
-      />
-      {selectedTransaction && (
-        <TransactionModal
-          transaction={selectedTransaction}
-          onClose={() => setSelectedTransaction(null)}
-        />
-      )}
-      
-      {/* Totals */}
-      <div className="mt-8 p-4 bg-white shadow rounded-lg">
-        <h2 className="text-2xl font-semibold mb-4">Financial Summary</h2>
-        <p>Total Income: ${totalIncome.toFixed(2)}</p>
-        <p>Total Expense: ${totalExpense.toFixed(2)}</p>
-        <p>Balance: ${balance.toFixed(2)}</p>
-      </div>
+    <div className="max-w-7xl mx-auto py-8 px-4">
+      <div className="grid md:grid-cols-2 gap-16">
+        {/* Left side - Transaction History */}
+        <div>
+          <TransactionFilters onFilterChange={handleFilterChange} />
+          <TransactionList
+            transactions={filteredTransactions}
+            onClick={handleTransactionClick}
+          />
+          {selectedTransaction && (
+            <TransactionModal
+              transaction={selectedTransaction}
+              onClose={() => setSelectedTransaction(null)}
+            />
+          )}
+        </div>
 
-      {/* Chart */}
-      <div className="my-8">
-        <h2 className="text-2xl font-semibold mb-4">Transaction Overview</h2>
-        <TransactionChart chartData={chartData} />
+        {/* Right side - Chart and Summary */}
+        <div>
+          {/* Chart */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">
+              Transaction Overview
+            </h2>
+            <TransactionChart chartData={chartData} />
+          </div>
+
+          {/* Financial Summary */}
+          <div className="p-4 bg-white shadow rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4">Financial Summary</h2>
+            <p>Total Income: ${totalIncome.toFixed(2)}</p>
+            <p>Total Expense: ${totalExpense.toFixed(2)}</p>
+            <p>Balance: ${balance.toFixed(2)}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
