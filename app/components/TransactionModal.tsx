@@ -11,31 +11,28 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   onClose,
 }) => {
   return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-      <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-        <div className="mt-3 text-center">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">
+    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
+      <div className="relative p-5 border w-1/2 shadow-lg rounded-md bg-white">
+        <div className="text-center">
+          <h3 className="text-2xl font-semibold text-gray-900">
             Transaction Details
           </h3>
-          <div className="mt-2 px-7 py-3">
-            <p className="text-sm text-gray-500">Date: {transaction.date}</p>
-            <p className="text-sm text-gray-500">
+          <div className="mt-4 px-7 py-3">
+            <p className="text-lg text-gray-600">Date: {transaction.date}</p>
+            <p className="text-lg text-gray-600">
               Amount: {transaction.amount}
             </p>
-            <p className="text-sm text-gray-500">Type: {transaction.type}</p>
-            <p className="text-sm text-gray-500">
+            <p className="text-lg text-gray-600">Type: {transaction.type}</p>
+            <p className="text-lg text-gray-600">
               Details: {transaction.details}
             </p>
           </div>
-          <div className="items-center px-4 py-3">
-            <button
-              id="ok-btn"
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-              onClick={onClose}
-            >
-              X
-            </button>
-          </div>
+          <button
+            className="absolute top-4 right-4 text-lg text-gray-500 hover:text-gray-700"
+            onClick={onClose}
+          >
+            X
+          </button>
         </div>
       </div>
     </div>
